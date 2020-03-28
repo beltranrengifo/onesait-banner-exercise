@@ -1,12 +1,28 @@
 <template>
-  <div>text</div>
+  <div>
+    {{ label }}<br>
+    {{ title }}<br>
+    {{ subtitle }}
+  </div>
 </template>
 
 <script>
 
 export default {
   name: 'BannerTextContent',
-  components: {
+  props: {
+    label: {
+      type: String,
+      required: true
+    },
+    title: {
+      type: String,
+      required: true
+    },
+    subtitle: {
+      type: String,
+      required: true
+    }
   }
 }
 </script>
