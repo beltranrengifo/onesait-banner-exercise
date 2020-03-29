@@ -1,0 +1,13 @@
+@mixin for-size($range) {
+  $--phone: 768px;
+  $--tablet: 1024px;
+  $--desktop: 1280px;
+
+  @if $range == until-phone {
+    @media (max-width: #{$--phone - 1}) { @content; }
+  } @else if $range == until-tablet {
+    @media (max-width: #{$--tablet - 1}) { @content; }
+  } @else if $range == only-desktop {
+    @media (min-width: $--desktop) { @content; }
+  }
+}
