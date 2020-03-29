@@ -66,41 +66,49 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  .text-content {
-    &__wrap {
-      padding: 3rem 3.5rem 3rem 0;
-      transition: var(--default-transition);
-      &.invert {
-        padding: 3rem 0 3rem 3.5rem;
+@import 'breakpoints.scss';
+
+.text-content {
+  &__wrap {
+    padding: 3rem 3.5rem 3rem 0;
+    transition: var(--default-transition);
+    &.invert {
+      padding: 3rem 0 3rem 3.5rem;
+      @include for-size(until-tablet) {
+        padding: 0;
       }
     }
-    &__label {
-      display: flex;
-      justify-content: space-between;
-      font-size: 1.2rem;
-      margin-bottom: 2rem;
-    }
-    &__title {
-      font-size: 3.5rem;
-      margin-bottom: 3rem;
-      position: relative;
-      padding: 0 0 1.5rem;
-      &::after {
-        content: '';
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        width: 112px;
-        height: 3px;
-        background-color: var(--green-color);
-      }
-    }
-    &__subtitle {
-      font-size: 1.5rem;
-      line-height: 2rem;
-      margin-bottom: 2.5rem;
-      width: 440px;
-      max-width: 100%;
+    @include for-size(until-tablet) {
+      padding: 0;
     }
   }
+  &__label {
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+  }
+  &__title {
+    font-size: 3.5rem;
+    margin-bottom: 3rem;
+    position: relative;
+    padding: 0 0 1.5rem;
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 112px;
+      height: 3px;
+      background-color: var(--green-color);
+    }
+  }
+  &__subtitle {
+    font-size: 1.5rem;
+    line-height: 2rem;
+    margin-bottom: 2.5rem;
+    width: 440px;
+    max-width: 100%;
+  }
+}
 </style>

@@ -30,6 +30,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import 'breakpoints.scss';
+
 .button {
   &__button {
     background: var(--color-primary);
@@ -41,6 +43,9 @@ export default {
     letter-spacing: 1px;
     cursor: pointer;
     transition: var(--default-transition);
+    @include for-size(until-phone-sm) {
+      width: 100%;
+    }
     &:focus {
       outline: var(--color-primary) auto 1px;
     }

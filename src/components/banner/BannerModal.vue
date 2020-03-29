@@ -18,15 +18,14 @@
       </div>
       <div class="modal__content">
         <div class="modal__content-row">
-          <span>Use Flex / Grid</span>
           <banner-switch
             @handleSwitch="handleSwitchType"
             disabled-text="Flex"
             active-text="Grid"
+            hide-inner-text
           />
         </div>
         <div class="modal__content-row">
-          <span>Invert layout</span>
           <banner-switch
             @handleSwitch="handleSwitchLayout"
             disabled-text="Normal"
@@ -94,16 +93,15 @@ export default {
     left: 50vw;
     z-index: 9;
     background: var(--color-white);
-    // background: grey;
     transform: translate(-50%, -50%);
     border-radius: 10px;
     box-shadow: 0px 0px 16px 0px rgba(0, 0, 0, 0.15);
-    -webkit-transition: none;
--moz-transition: none;
--o-transition: none;
--ms-transition: none;
-transition: none;
+    padding: 32px;
+    box-sizing: border-box;
+  }
 
+  &__content-row {
+    margin: 4px 0 16px;
   }
 
   &__close {

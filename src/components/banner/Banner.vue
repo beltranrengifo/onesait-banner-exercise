@@ -2,7 +2,6 @@
   <section
     :key="key"
     class="banner"
-    :class="{'transition': isTransition}"
   >
     <div
       class="banner__wrap"
@@ -51,7 +50,6 @@ export default {
       subtitle: '',
       useFlex: true,
       invertLayoutOrder: false,
-      isTransition: false,
       key: 0
     }
   },
@@ -77,8 +75,8 @@ export default {
       const { data } = await axios.get('https://baconipsum.com/api/?type=meat-and-filler&paras=1')
       const text = data[0].toLowerCase().replace(/\. |,/g, '')
       this.title = this.getChunk(text, 0, 11)
-      this.label = this.getChunk(text, 11, 32)
-      this.subtitle = this.getChunk(text, 32, 120)
+      this.label = this.getChunk(text, 11, 46)
+      this.subtitle = this.getChunk(text, 32, 135)
     },
 
     getChunk (text, a, b) {
@@ -86,11 +84,7 @@ export default {
     },
 
     invertLayout () {
-      this.isTransition = true
-      setTimeout(() => {
-        this.invertLayoutOrder = !this.invertLayoutOrder
-        this.isTransition = false
-      }, 1000)
+      this.invertLayoutOrder = !this.invertLayoutOrder
     },
 
     switchType () {
@@ -109,33 +103,9 @@ export default {
   @import 'breakpoints.scss';
 
   .banner {
-    $--self: &;
-    opacity: 1;
-    transition: var(--default-transition);
-
     &,
     * {
       box-sizing: border-box;
-    }
-
-    &:after {
-      content: '';
-      position: fixed;
-      height: 100vh;
-      width: 100vw;
-      background: transparent;
-      pointer-events: none;
-      z-index: -9;
-      top: 0;
-      left: 0;
-      transition: var(--default-transition);
-    }
-
-    &.transition {
-      &:after {
-        background: var(--color-white);
-        z-index: 8;
-      }
     }
 
     &__wrap {
@@ -151,7 +121,7 @@ export default {
 
         & > * {
           flex: 0 0 50%;
-          @media screen and (max-width: 1023px) {
+          @include for-size(until-tablet) {
             width: 100%;
           }
         }
@@ -172,6 +142,10 @@ export default {
         display: grid;
         grid-template-columns: repeat(2, 50%);
         align-items: center;
+
+        @include for-size(until-tablet) {
+          grid-template-columns: repeat(1, 100%);
+        }
       }
     }
   }
@@ -187,6 +161,7 @@ export default {
     --color-primary: #2e6c99;
     --color-secondary: #87BEE6;
     --color-grey: #D5DCE0;
+    --color-grey-dark: #6E767D;
     --color-white: white;
     --main-width: 1360px;
     --main-font: 'Titillium Web', sans-serif;
