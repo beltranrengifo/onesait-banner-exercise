@@ -100,7 +100,7 @@ export default {
       left: 0;
       width: 112px;
       height: 3px;
-      background-color: var(--green-color);
+      background-color: var(--color-green);
     }
   }
   &__subtitle {
